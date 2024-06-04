@@ -5,6 +5,7 @@ from rest_framework import status
 
 
 
+
 @api_view(['POST'])
 def detect(request):
     return Response({"message": "Hello, world!"}, status=status.HTTP_200_OK)

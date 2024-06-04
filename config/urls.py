@@ -19,6 +19,8 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # Includes the urls from the strip_color_detect app
-    path("api/", include("strip_color_detect.urls"))
+    # Include the urls of home app as our default route
+    path("", include("home.urls")),
+    # Includes the urls from the api app
+    path("api/", include("api.urls"))
 ]
