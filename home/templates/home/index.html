@@ -31,7 +31,7 @@
                     <form action="{% url 'api:detect' %}" method="post">
                         <div class="d-flex flex-column">
                             <label for="image" class="form-label">Upload Image: </label>
-                            <input class="form-control" type="file" id="image" name="image" accept="image/*" />
+                            <input class="form-control" type="file" id="image" name="image" accept="image/*" required/>
                             <img 
                                 id="displayImage" 
                                 class="mx-auto d-block my-3"
@@ -42,6 +42,7 @@
                 </div>
             </div>
         </div>
+        
 
         <script>
         // Display the image on the page when we upload the image
@@ -58,6 +59,21 @@
                     reader.readAsDataURL(file);
                 }
             });
+        
+        
+        document.querySelector("form").addEventListener("submit", async function (event) {
+            event.preventDefault();
+            const file = document.getElementById("image").files[0];
+
+            // Make POST request to the endpoint
+            const response = await fetch("{% url 'api:detect' %}", {
+                method: "POST",
+                body: new FormData(this),
+            });
+            const data = await response.json();
+            console.log(data);
+            
+        });
 
         </script>
         <!-- Bootstrap JavaScript Libraries -->
