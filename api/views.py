@@ -21,7 +21,7 @@ def get_colors(img_array):
         # Color is gotten from numpy array of image
         colors[reagents[i]] = img_array[y, x].tolist()
 
-        # Move to next reagent by incrementing distanct
+        # Move to next reagent by incrementing distance
         y += 90 
     
     return colors

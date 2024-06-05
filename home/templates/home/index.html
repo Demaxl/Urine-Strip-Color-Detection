@@ -41,6 +41,12 @@
                     </form>
                 </div>
             </div>
+            <hr class="mt-5">
+            <div class="row">
+                <div class="col">
+                    <pre id="result"></pre>
+                </div>
+            </div>
         </div>
         
 
@@ -71,6 +77,12 @@
                 body: new FormData(this),
             });
             const data = await response.json();
+
+            const p = document.getElementById("result");
+            
+            // Show the result block and set content to the response
+            p.style.display = "block";
+            p.textContent = JSON.stringify(data, null, 2);
             console.log(data);
             
         });
